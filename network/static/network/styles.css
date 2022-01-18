@@ -1,0 +1,39 @@
+@keyframes FadeAnimation {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.fadesuccess{
+  animation: FadeAnimation 1s ease-in .2s forwards;
+}
+
+#exampleFormControlTextarea1::placeholder{
+color:#ff0000;
+font-family: "Sofia";
+  font-size: 22px;
+}
+.labels{
+  font-family:"Butcherman";font-size: 22px;color:#ffff00;
+}
+.display-4{
+  font-family:"Nosifer";font-size: 40px;color:#1a000d;
+}
+.navbar-brand{
+  font-family:"Monofett";font-size: 60px;color:#1a000d;
+}
+.new{
+  font-family:"Norican";font-size: 29px;color:#330033;
+}
+#ptext{
+  font-family: "Sofia";
+    font-size: 22px;
+}
+.page-link{
+  background:"Red";
+}

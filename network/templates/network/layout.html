@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+        <link href='https://fonts.googleapis.com/css?family=Butcherman' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Kirang Haerang' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Barrio' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Monofett' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Norican' rel='stylesheet'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        {% if user.is_authenticated %}  <script>var a = {{ user.id }};let b = "{{user.username}}";</script>  {% else %}<script>var a = false;</script> {% endif %}
+      </head>
+    <body>
+
+      {% block script %}
+      <script src="{% static 'network/social.js' %}" type="text/babel"></script>
+      {% endblock %}
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"> <span style="color:#FF0000">S</span><span style="color:#66CC66">O</span><span style="color:#FF9966">C</span><span style="color:#FFCCCC">I</span><span style="color:#FF0066">A</span><span style="color:#cc33ff">L</span><span style="color:#993333">S</span></a>
+
+            <div>
+              <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                    <li id="ppost" class="nav-item">
+                    </li>
+                {% endif %}
+                <li  id="apost" class="nav-item">
+                </li>
+                {% if user.is_authenticated %}
+                    <li  id="fpost" class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}"><b style="color:red" >Log Out</b></a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+        <div  id="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
